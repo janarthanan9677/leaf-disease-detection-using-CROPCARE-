@@ -1,0 +1,23 @@
+Server code:
+def check():
+connection=MySQLdb.connect("localhost","root","root","IOT")
+cursorX=connection.cursor()
+statementX="SELECT * FROM agrdata ORDER BY id DESC LIMIT 1;"
+cursorX.execute(statementX)
+checkforcolor()
+avgResult=cursorX.fetchall()
+for row in avgResult:
+
+20
+
+colorR=row[1]
+colorG=row[2]
+colorB=row[3]
+avgTemp=row[4]
+avgHumidity=avgResult[5]
+connection.commit()
+connection.close()
+checkForColor()
+checkForTemperature()
+checkForHumidity()
+checkfordisease()
