@@ -1,0 +1,17 @@
+Reading sensor data Arduino:
+
+void readSensors(void)
+{
+temperature = DHT.humidity;
+temperature = (temperature-491.67)*5/9;
+humidity = DHT.temperature;
+digitalWrite(S2,LOW);
+digitalWrite(S3,LOW);
+colorRed = pulseIn(sensorOut, LOW);
+digitalWrite(S2,HIGH);
+digitalWrite(S3,HIGH);
+colorGreen = pulseIn(sensorOut, LOW);
+digitalWrite(S2, LOW);
+digitalWrite(S3, HIGH);
+colorBlue = pulseIn(sensorOut, LOW);
+}
