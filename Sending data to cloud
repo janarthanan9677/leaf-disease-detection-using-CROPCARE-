@@ -1,0 +1,36 @@
+Sending data to cloud:
+
+void GetThingspeakcmd(String getStr)
+{
+String cmd = "AT+CIPSEND=";
+cmd += String(getStr.length());
+ESP8266.println(cmd);
+Serial.println(cmd);
+if(ESP8266.find(">"))
+{
+
+19
+
+ESP8266.print(getStr);
+Serial.println(getStr);
+delay(500);
+String messageBody = "";
+while (ESP8266.available())
+{
+String line = ESP8266.readStringUntil('\n');
+if (line.length() == 1)
+IOT based crop disease detection and pesticide recommendation
+Dept. of ISE, RVCE 2018-19 33
+{
+messageBody = ESP8266.readStringUntil('\n');
+}
+}
+Serial.print("MessageBody received: ");
+Serial.println(messageBody);
+return messageBody;
+}
+else
+{
+ESP8266.println("AT+CIPCLOSE");
+Serial.println("AT+CIPCLOSE");
+}
